@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michel Foucault: Vida, Obra y Pensamiento</title>
+    <style>
+        /* --- Importación de Fuentes de Google --- */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap');
+
+        /* --- Variables de Diseño --- */
+        :root {
+            --color-primario: #1a1a1a;
+            --color-secundario: #f4f4f4;
+            --color-acento: #c5a553; /* Un dorado ocre intelectual */
+            --color-texto: #cccccc;
+            --fuente-titulos: 'Montserrat', sans-serif;
+            --fuente-cuerpo: 'Lora', serif;
+        }
+
+        /* --- Estilos Generales --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fuente-cuerpo);
+            background-color: var(--color-primario);
+            color: var(--color-texto);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-secundario);
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--color-acento);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--color-acento);
+            font-weight: 400;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: var(--color-acento);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: var(--color-secundario);
+                text-decoration: underline;
+            }
+
+        /* --- Header y Navegación --- */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            color: var(--color-secundario);
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .header-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--color-acento);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            font-family: var(--fuente-titulos);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                nav ul li {
+                    display: inline-block;
+                    margin: 0 15px;
+                }
+
+                    nav ul li a {
+                        color: var(--color-secundario);
+                        font-family: var(--fuente-titulos);
+                        font-weight: 400;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                        nav ul li a:hover {
+                            color: var(--color-acento);
+                            text-decoration: none;
+                        }
+
+        /* --- Estilo de las Citas --- */
+        blockquote {
+            border-left: 4px solid var(--color-acento);
+            padding-left: 25px;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-secundario);
+        }
+
+            blockquote footer {
+                margin-top: 10px;
+                font-size: 1rem;
+                font-style: normal;
+                color: var(--color-texto);
+                text-align: right;
+            }
+
+        /* --- Sección de Pensamiento (Tarjetas) --- */
+        .grid-pensamiento {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-idea {
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card-idea:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            }
+
+        /* --- Sección de Obras (Tarjetas de Libros) --- */
+        .grid-obras {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-obra {
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+            .card-obra h3 {
+                min-height: 50px; /* Para alinear títulos */
+            }
+
+            .card-obra p {
+                font-size: 0.9rem;
+                flex-grow: 1;
+            }
+
+        .btn-enlace {
+            display: inline-block;
+            background-color: var(--color-acento);
+            color: var(--color-primario);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: var(--fuente-titulos);
+            font-weight: 700;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-enlace:hover {
+                background-color: #e0c57f;
+                text-decoration: none;
+                color: #000;
+            }
+
+        /* --- Listas --- */
+        ul.lista-influencias, .lista-recursos {
+            list-style: none;
+            padding-left: 0;
+        }
+
+            ul.lista-influencias li, .lista-recursos li {
+                padding-left: 25px;
+                position: relative;
+                margin-bottom: 10px;
+            }
+
+                ul.lista-influencias li::before, .lista-recursos li::before {
+                    content: '›';
+                    font-family: 'Times New Roman', Times, serif;
+                    color: var(--color-acento);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    font-size: 1.5rem;
+                    line-height: 1.3;
+                }
+
+        /* --- Footer --- */
+        footer.main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            background-color: #111;
+            border-top: 2px solid var(--color-acento);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Michel_Foucault.jpg/440px-Michel_Foucault.jpg" alt="Retrato de Michel Foucault">
+            <h1>Michel Foucault</h1>
+            <p>El filósofo de las estructuras de poder y conocimiento</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#biografia">Biografía</a></li>
+            <li><a href="#pensamiento">Pensamiento</a></li>
+            <li><a href="#obras">Obras</a></li>
+            <li><a href="#influencias">Influencias</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+
+            <section id="biografia">
+                <h2>Biografía y Contexto</h2>
+                <p><strong>Paul-Michel Foucault</strong> (1926-1984) fue un filósofo, historiador, sociólogo y psicólogo francés, reconocido como una de las figuras más influyentes del pensamiento contemporáneo. Su vida y obra se desarrollaron en un período de profundos cambios sociales y políticos en Europa: la posguerra, la Guerra Fría, la descolonización y los movimientos de Mayo del 68.</p>
+                <p>Nacido en Poitiers, Francia, Foucault tuvo una carrera académica brillante, aunque marcada por crisis personales y un profundo interés por la psicología y la locura. Enseñó en diversas universidades en Francia y en el extranjero, culminando con su nombramiento en el prestigioso <strong>Collège de France</strong> en 1970, donde ocupó la cátedra de "Historia de los Sistemas de Pensamiento". Su obra atraviesa la filosofía, la historia y la crítica social, desafiando las nociones aceptadas sobre la verdad, el poder, la identidad y la sexualidad.</p>
+                <p>Filosóficamente, se le asocia con el <strong>estructuralismo</strong> y el <strong>post-estructuralismo</strong>. Aunque inicialmente se alineó con el estructuralismo, más tarde se distanció, prefiriendo describir su propio trabajo como una "historia crítica del pensamiento". Su método evoluciona desde una "arqueología del saber" hacia una "genealogía del poder", influenciado notablemente por Nietzsche.</p>
+            </section>
+
+            <section id="pensamiento">
+                <h2>Principales Ideas</h2>
+                <p>El pensamiento de Foucault es un análisis crítico de las instituciones sociales (la prisión, el hospital, la escuela, la psiquiatría) y de las formas de saber que las sustentan, mostrando cómo estas construyen y normalizan al ser humano.</p>
+
+                <div class="grid-pensamiento">
+                    <div class="card-idea">
+                        <h3>Arqueología del Saber</h3>
+                        <p>En su primera etapa, Foucault utiliza la "arqueología" para desenterrar las reglas inconscientes (<em>episteme</em>) que determinan lo que puede ser pensado y dicho en una época determinada. No busca el origen, sino las condiciones de posibilidad del discurso.</p>
+                        <blockquote>
+                            "La arqueología [...] no trata de las representaciones que puedan estar detrás de los discursos; quiere determinar no el pensamiento de la gente, sino el sistema que hizo posibles sus pensamientos."
+                            <footer>— La arqueología del saber (1969)</footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-idea">
+                        <h3>Genealogía del Poder</h3>
+                        <p>Influenciado por Nietzsche, su método se convierte en "genealogía". Aquí, analiza cómo las prácticas de poder, a menudo violentas y contingentes, han dado forma a las instituciones y a los saberes que hoy consideramos "verdaderos" o "naturales".</p>
+                        <blockquote>
+                            "La genealogía no se opone a la historia [...]; se opone al despliegue metahistórico del sentido ideal y de las teleologías indefinidas."
+                            <footer>— Nietzsche, la genealogía, la historia (1971)</footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-idea">
+                        <h3>Poder/Saber</h3>
+                        <p>Una de sus tesis centrales es que el poder y el saber están intrínsecamente ligados. El poder no solo reprime, sino que produce realidad, crea discursos de verdad y fabrica sujetos. No hay saber que no presuponga una relación de poder, ni poder que no se ejerza a través de un saber.</p>
+                        <blockquote>
+                            "El poder no se posee, se ejerce. [...] No es una propiedad, sino una estrategia. Sus efectos no son atribuibles a una apropiación, sino a disposiciones, maniobras, tácticas, técnicas, funcionamientos."
+                            <footer>— Vigilar y castigar (1975)</footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-idea">
+                        <h3>Biopoder y Biopolítica</h3>
+                        <p>Foucault describe una nueva forma de poder que emerge en la modernidad, el "biopoder". Este poder ya no se centra en el derecho a matar del soberano, sino en la gestión de la vida de las poblaciones: la salud, la natalidad, la longevidad. La vida misma se convierte en un objeto de control político.</p>
+                        <blockquote>
+                            "Se podría decir que al viejo derecho de hacer morir o de dejar vivir, se ha sustituido un poder de hacer vivir o de arrojar a la muerte."
+                            <footer>— Historia de la sexualidad I: La voluntad de saber (1976)</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section id="obras">
+                <h2>Principales Obras</h2>
+                <p>Las obras de Foucault son pilares del pensamiento del siglo XX. A continuación, algunas de las más importantes con enlaces a versiones digitales (gratuitas cuando es posible) o a tiendas en línea.</p>
+
+                <div class="grid-obras">
+                    <div class="card-obra">
+                        <h3>Historia de la locura en la época clásica (1961)</h3>
+                        <p>Un estudio arqueológico sobre cómo la "locura" fue construida como el "otro" de la "razón" durante la Ilustración, a través de la práctica del internamiento.</p>
+                        <a href="https://archive.org/details/historiadelalocuraenlaepocaclasicafoucaultmichel" target="_blank" class="btn-enlace">Leer en Archive.org (Gratis)</a>
+                    </div>
+
+                    <div class="card-obra">
+                        <h3>Las palabras y las cosas (1966)</h3>
+                        <p>Una "arqueología de las ciencias humanas" que analiza las transformaciones en las <em>epistemes</em> (estructuras de conocimiento) desde el Renacimiento hasta la modernidad.</p>
+                        <a href="https://www.amazon.es/palabras-cosas-arqueolog%C3%ADa-ciencias-humanas/dp/843231294X/" target="_blank" class="btn-enlace">Comprar en Amazon</a>
+                    </div>
+
+                    <div class="card-obra">
+                        <h3>Vigilar y castigar (1975)</h3>
+                        <p>Una genealogía de la prisión moderna que revela el paso del suplicio público a la disciplina panóptica, una forma sutil y eficiente de poder que normaliza a los individuos.</p>
+                        <a href="https://archive.org/details/vigilar-y-castigar-nacimiento-de-la-prision-michel-foucault" target="_blank" class="btn-enlace">Leer en Archive.org (Gratis)</a>
+                    </div>
+
+                    <div class="card-obra">
+                        <h3>Historia de la sexualidad I: La voluntad de saber (1976)</h3>
+                        <p>Contrario a la idea de que la sexualidad fue reprimida en la época victoriana, Foucault argumenta que se produjo una "incitación al discurso", una explosión de saberes sobre el sexo para controlarlo.</p>
+                        <a href="https://www.amazon.es/Historia-sexualidad-Voluntad-Saber-Biblioteca/dp/8432312001/" target="_blank" class="btn-enlace">Comprar en Amazon</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="influencias">
+                <h2>Influencias y Legado</h2>
+                <p>El pensamiento de Foucault no surgió en el vacío y, a su vez, ha redefinido campos enteros del saber.</p>
+
+                <h3>Influencias Recibidas</h3>
+                <ul class="lista-influencias">
+                    <li><strong>Friedrich Nietzsche:</strong> La idea de la genealogía, la crítica a la moral y la verdad, y la relación entre poder y voluntad son fundamentales para Foucault.</li>
+                    <li><strong>Martin Heidegger:</strong> La crítica a la metafísica occidental y el interés por las condiciones históricas del ser y del pensamiento.</li>
+                    <li><strong>Georges Canguilhem y Gaston Bachelard:</strong> Sus maestros en la historia de la ciencia, de quienes tomó la idea de "ruptura epistemológica" y el análisis de los conceptos científicos en su contexto histórico.</li>
+                    <li><strong>Estructuralismo (Saussure, Lévi-Strauss):</strong> Aunque crítico, adoptó su enfoque en las estructuras subyacentes e inconscientes que gobiernan el lenguaje y la cultura.</li>
+                </ul>
+
+                <h3>Influencia Ejercida</h3>
+                <p>El legado de Foucault es inmenso y se extiende a:</p>
+                <ul class="lista-influencias">
+                    <li><strong>Estudios de Género y Teoría Queer:</strong> Su análisis de la construcción social de la sexualidad fue clave para teóricas como Judith Butler.</li>
+                    <li><strong>Estudios Poscoloniales:</strong> Autores como Edward Said utilizaron el análisis foucaultiano del discurso para estudiar cómo Occidente construyó a "Oriente".</li>
+                    <li><strong>Teoría Crítica y Sociología:</strong> Su visión del poder como algo productivo y disperso ha transformado el análisis de las instituciones sociales.</li>
+                    <li><strong>Filosofía Contemporánea:</strong> Pensadores como Giorgio Agamben, Achille Mbembe y Byung-Chul Han dialogan constantemente con su concepto de biopoder.</li>
+                </ul>
+            </section>
+
+            <section id="recursos">
+                <h2>Recursos y Enlaces Externos</h2>
+                <p>Para profundizar en la vida y obra de Michel Foucault, se recomiendan los siguientes recursos:</p>
+
+                <ul class="lista-recursos">
+                    <li><a href="https://es.wikipedia.org/wiki/Michel_Foucault" target="_blank">Artículo de Michel Foucault en Wikipedia</a> - Una excelente introducción general a su vida, obra y conceptos clave.</li>
+                    <li><a href="https://plato.stanford.edu/entries/foucault/" target="_blank">Stanford Encyclopedia of Philosophy (en inglés)</a> - Un análisis académico exhaustivo y riguroso de su filosofía.</li>
+                    <li><a href="https://iep.utm.edu/foucault/" target="_blank">Internet Encyclopedia of Philosophy (en inglés)</a> - Otra fuente académica de gran calidad, muy accesible.</li>
+                    <li><a href="https://www.academia.edu/40306159/Introducci%C3%B3n_al_pensamiento_de_Michel_Foucault" target="_blank">Introducción al pensamiento de Foucault (Academia.edu)</a> - Un ejemplo de los muchos artículos y ensayos disponibles en esta plataforma.</li>
+                    <li><a href="https://foucault.info/" target="_blank">Foucault.info</a> - Un portal con noticias, bibliografía y recursos sobre Foucault (principalmente en inglés y francés).</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Página diseñada como un homenaje a Michel Foucault (1926-1984).</p>
+        <p>© 2023 - Creado en Unicode-8 con HTML y CSS puro.</p>
+    </footer>
+
+</body>
+</html>
